@@ -7,13 +7,56 @@
 
 
 {% block body_block %}
-    <h1>Register Here</h1>
+    <div class="jumbotron p-4">
+        <div class="container">
+            <h1 class="jumbotron-heading">Register Here</h1>
+        </div>
+    </div>
 
-    <form action="." method="post">
-        {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                <form role="form" method="post" action=".">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <p class="required">
+                            <label class="required" for="id_username">
+                                Username:</label>
+                            <input class="form-control" type="text" name="username" 
+                                   id="id_username" maxlength="30" />
+                            <span class="helptext">
+                                Required. 30 characters or fewer.
+                                Letters, digits and @/./+/-/_ only.
+                            </span>
+                        </p>
 
-        {{ form.as_p }}
+                        <p class="required">
+                            <label class="required" for="id_email">
+                                E-mail:</label>
+                            <input class="form-control" type="email" name="email" 
+                                   id="id_email" />
+                        </p>
 
-        <input type="submit" value="Register" />
-    </form>
+                        <p class="required">
+                            <label class="required" for="id_password1">
+                                Password:</label>
+                            <input class="form-control" type="password" name="password1" 
+                                   id="id_password1" />
+                        </p>
+
+                        <p class="required">
+                            <label class="required" for="id_password2">
+                                Password Confirmation:</label>
+                            <input class="form-control" type="password" name="password2" 
+                                   id="id_password2" />
+                            <span class="helptext">
+                                Enter the same password as before, for verification.
+                            </span>
+                        </p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock body_block %}
