@@ -4,5 +4,6 @@ __pycache__/
 # ignore all .pyc files
 *.pyc
 
+*.key
 
 db.sqlite3

@@ -17,7 +17,8 @@ def populate():
          {'title': 'How to Think like a Computer Scientist',
          'url': 'http://www.greenteapress.com/thinkpython/', 'views': 322},
          {'title': 'Learn Python in 10 Minutes',
-         'url': 'http://www.korokithakis.net/tutorials/python/', 'views': 72}]
+         'url': 'http://www.korokithakis.net/tutorials/python/', 'views': 72}
+    ]
 
     django_pages = [
         {'title':'Official Django Tutorial',
@@ -25,21 +26,33 @@ def populate():
         {'title':'Django Rocks',
          'url':'http://www.djangorocks.com/', 'views': 64},
         {'title':'How to Tango with Django',
-         'url':'http://www.tangowithdjango.com/', 'views': 386}]
+         'url':'http://www.tangowithdjango.com/', 'views': 386}
+    ]
 
     other_pages = [
         {'title':'Bottle',
          'url':'http://bottlepy.org/docs/dev/', 'views': 98},
         {'title':'Flask',
-         'url':'http://flask.pocoo.org', 'views': 42}]
+         'url':'http://flask.pocoo.org', 'views': 42}
+    ]
 
     cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
             'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
-            'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16}}
+            'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16},
+            'Pascal': {'pages': []},
+            'Perl': {'pages': []},
+            'PHP': {'pages': []},
+            'Prolog': {'pages': []},
+            'PostScript': {'pages': []},
+            'Programming': {'pages': []},
+    }
 
     # Nevigete through cats dictionary and adds each category and their pages.
     for cat, cat_data in cats.items():
-        c = add_cat(cat, cat_data['views'], cat_data['likes'])
+        if 'views' in cat_data:
+            c = add_cat(cat, cat_data['views'], cat_data['likes'])
+        else:
+            c = add_cat(cat)
         for p in cat_data['pages']:
             add_page(c, p['title'], p['url'], p['views'])
 
